@@ -36,7 +36,7 @@ def proceso(archivo):
     df = pd.read_excel(archivo, engine = 'openpyxl', skiprows = 1).iloc[:-1].fillna('-')
     df.columns = [str(i) for i in df.columns]
 
-    ceco_idx = [x for x,y in df.iterrows() if re.findall(inicio, y['Centro de costo'])]
+    ceco_idx = [x for x,y in df.iterrows() if re.findall(regex_ceco_inicio, y['Centro de costo'])]
     ceco_idx.append(df.shape[0])
     df_list = [df.iloc[ceco_idx[n-1]:ceco_idx[n]-1].assign(Ceco = re.findall(r'\d+', df['Centro de costo'].iloc[ceco_idx[n-1]])[0]) for n in range(1, len(ceco_idx))]
 
