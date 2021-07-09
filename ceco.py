@@ -65,6 +65,6 @@ archivo = st.file_uploader('Subir archivo')
 
 if archivo:
     df = proceso(archivo)
-    csv = df.to_csv(index=False, sep=',', encoding = 'latin1')
-    b64 = base64.b64encode(csv.encode('latin1')).decode()
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
     st.markdown(f'<a href="data:file/csv;base64,{b64}" download="out.csv">Descargar Csv</a>', unsafe_allow_html=True)
