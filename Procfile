@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run blanqui.py
+web: sh setup.sh && streamlit run ceco.py
